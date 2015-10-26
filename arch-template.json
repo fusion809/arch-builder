@@ -11,6 +11,7 @@
             "iso_checksum": "{{user `iso_checksum`}}",
             "iso_checksum_type": "{{user `iso_checksum_type`}}",
             "guest_os_type": "ArchLinux_64",
+            "headless": true,
             "guest_additions_mode": "disable",
             "http_directory": ".",
             "boot_wait": "5s",
@@ -18,9 +19,27 @@
                 "<enter><wait10><wait10>",
                 "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/install-virtualbox.sh<enter><wait5>",
                 "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/poweroff.timer<enter><wait5>",
-                "/usr/bin/bash ./install-virtualbox.sh<enter>"
+                "/usr/bin/bash ./install-virtualbox.sh<enter>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>"
             ],
-            "disk_size": 20480,
+            "disk_size": 122880,
             "hard_drive_interface": "sata",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -35,8 +54,10 @@
             "boot_wait": "5s",
             "boot_command": [
                 "<enter><wait10><wait10>",
-                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/install-vmware.sh<enter><wait5>",
-                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/poweroff.timer<enter><wait5>",
+                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/install-vmware.sh<enter>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/poweroff.timer<enter>",
+		"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
                 "/usr/bin/bash ./install-vmware.sh<enter>"
             ],
             "disk_size": 20480,
@@ -56,9 +77,9 @@
             "boot_wait": "5s",
             "boot_command": [
                 "<enter><wait10><wait10>",
-                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/install-parallels.sh<enter><wait5>",
-                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/poweroff.timer<enter><wait5>",
-                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/parallels_tools.sh<enter><wait5>",
+                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/install-parallels.sh<enter><wait10><wait10><wait10><wait10><wait10>",
+                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/poweroff.timer<enter><wait10><wait10><wait10><wait10><wait10>",
+                "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/parallels_tools.sh<enter><wait10><wait10><wait10><wait10>",
                 "/usr/bin/bash ./install-parallels.sh<enter>"
             ],
             "disk_size": 20480,
@@ -69,8 +90,8 @@
     ],
     "post-processors": [
         {
-            "type": "vagrant",
-            "output": "packer_arch_{{.Provider}}.box"
+            "type": "compress",
+            "output": "packer_arch_{{.Provider}}.tar.gz"
         }
     ]
 }
