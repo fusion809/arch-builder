@@ -10,7 +10,7 @@ These scripts I have not actually run, because running these packer commands tak
 
     packer build -only=virtualbox-iso arch-template_ps-mem.json
 
-while to get AL-ABM with the Deepin Desktop Environment pre-installed run:
+while to get AL-ABM with the [Deepin Desktop Environment](https://wiki.archlinux.org/index.php/Deepin_Desktop_Environment) pre-installed run:
 
     packer build -only=virtualbox-iso arch-template_dde.json
 
@@ -19,7 +19,7 @@ The installation script follows the
 [official installation guide](https://wiki.archlinux.org/index.php/Installation_Guide)
 pretty closely, with a few tweaks to ensure functionality within a VM. Beyond
 that, the only customizations to the machine are related to the vagrant user
-and the steps recommended for any base box. Username is vagrant, password is vagrant. Root password is vagrant. 
+and the steps recommended for any base box. Username is vagrant, password is vagrant. Root password is vagrant.
 
 # License
 Arch Builder is provided under the terms of the
