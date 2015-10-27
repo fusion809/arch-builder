@@ -19,7 +19,7 @@ The installation script follows the
 [official installation guide](https://wiki.archlinux.org/index.php/Installation_Guide)
 pretty closely, with a few tweaks to ensure functionality within a VM. Beyond
 that, the only customizations to the machine are related to the vagrant user
-and the steps recommended for any base box.
+and the steps recommended for any base box. Username is vagrant, password is vagrant. Root password is vagrant. 
 
 # License
 Arch Builder is provided under the terms of the
