@@ -1,6 +1,6 @@
 Arch Builder
 ===========
-Arch Builder are a collection of files that can be used to create an Arch Linux VirtualBox machine. The beauty of these tools is that they require no technical no-how on behalf of the user. Simply, open up a terminal (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>), `cd` to the Arch Builder directory and run:
+Arch Builder are a collection of files that can be used to create an Arch Linux VirtualBox machine. The beauty of these tools is that they require minimal technical no-how on behalf of the user. Assuming you have [Packer](https://packer.io) installed, simply, open up a terminal (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>), `cd` to the Arch Builder directory and run:
 
     $ packer build -only=virtualbox-iso arch-template.json
 
