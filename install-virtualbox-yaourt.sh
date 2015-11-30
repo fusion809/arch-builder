@@ -91,6 +91,17 @@ rm "${TARGET_DIR}${CONFIG_SCRIPT}"
 echo '==> adding workaround for shutdown race condition'
 /usr/bin/install --mode=0644 poweroff.timer "${TARGET_DIR}/etc/systemd/system/poweroff.timer"
 
+/usr/bin/pacman -S git
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -s
+sudo pacman -U *.pkg.tar.xz --noconfirm
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -s
+sudo pacman -U *.pkg.tar.xz --noconfirm
+
 echo '==> installation complete!'
 /usr/bin/sleep 3
 /usr/bin/umount ${TARGET_DIR}

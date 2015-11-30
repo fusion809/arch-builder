@@ -43,7 +43,8 @@
             "hard_drive_interface": "sata",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
-            "shutdown_command": "sudo systemctl start poweroff.timer"
+            "shutdown_command": "sudo systemctl start poweroff.timer",
+            "vm_name": "Arch RAM tester"
           }
         ],
     "post-processors": [

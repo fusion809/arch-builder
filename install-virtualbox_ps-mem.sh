@@ -83,6 +83,13 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/pacman -Scc --noconfirm
 EOF
 
+chroot /mnt /bin/bash <<'EOF'
+/usr/bin/pacman -S wget zip python2
+wget -c https://github.com/pixelb/ps_mem/archive/master.zip
+unzip master.zip
+printf "function ps_mem {\n sudo /usr/bin/python2 /home/vagrant/ps_mem/ps_mem.py -p "'$@'" \n}" >> ~/.bashrc
+EOF
+
 echo '==> entering chroot and configuring system'
 /usr/bin/arch-chroot ${TARGET_DIR} ${CONFIG_SCRIPT}
 rm "${TARGET_DIR}${CONFIG_SCRIPT}"
