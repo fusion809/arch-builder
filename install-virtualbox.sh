@@ -35,7 +35,7 @@ echo "==> mounting ${ROOT_PARTITION} to ${TARGET_DIR}"
 
 echo '==> bootstrapping the base installation'
 /usr/bin/pacstrap ${TARGET_DIR} base base-devel
-/usr/bin/arch-chroot ${TARGET_DIR} pacman -S --noconfirm gptfdisk openssh syslinux git
+/usr/bin/arch-chroot ${TARGET_DIR} pacman -S --noconfirm gptfdisk openssh syslinux
 /usr/bin/arch-chroot ${TARGET_DIR} syslinux-install_update -i -a -m
 /usr/bin/sed -i 's/sda3/sda1/' "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
 /usr/bin/sed -i 's/TIMEOUT 50/TIMEOUT 10/' "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
@@ -69,6 +69,13 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/systemctl enable dkms.service
 	/usr/bin/systemctl enable vboxservice.service
 	/usr/bin/systemctl enable rpcbind.service
+
+	# Yaourt
+	/usr/bin/pacman -S --noconfirm git
+	/usr/bin/git clone https://aur.archlinux.org/package-query.git
+	cd package-query && makepkg -si --noconfirm
+	/usr/bin/git clone https://aur.archlinux.org/yaourt.git
+	cd yaourt && makepkg -si --noconfirm
 
 	# clean up
 	/usr/bin/pacman -Rcns --noconfirm gptfdisk
