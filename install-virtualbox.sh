@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 DISK='/dev/sda'
-echo "Type the hostname, followed by [ENTER]:"
+echo "Type in the hostname, followed by [ENTER]:"
 read FQDN
+echo "Type in the username, followed by [ENTER]:"
+read USERNAME
 KEYMAP='us'
 LANGUAGE='en_AU.UTF-8'
-echo "Type the password, followed by [ENTER]:"
+echo "Type in the password, followed by [ENTER]:"
 read PASS
 PASSWORD=$(/usr/bin/openssl passwd -crypt "$PASS")
 TIMEZONE='Australia/Brisbane'
@@ -70,12 +72,19 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/systemctl enable vboxservice.service
 	/usr/bin/systemctl enable rpcbind.service
 
+	useradd $USERNAME
+	mkhomedir_helper $USERNAME
+	passwd $USERNAME
+	echo "$PASSWORD"
+
+	echo "$PASSWORD"
+
+
 	# Yaourt
 	/usr/bin/pacman -S --noconfirm git
-	/usr/bin/git clone https://aur.archlinux.org/package-query.git
-	cd package-query && makepkg -si --noconfirm
-	/usr/bin/git clone https://aur.archlinux.org/yaourt.git
-	cd yaourt && makepkg -si --noconfirm
+	wget http://bit.ly/1U0shka -O- > package-query-1.7-1-x86_64.pkg.tar.xz
+	wget http://bit.ly/1OGW65h -O- > yaourt-1.7-1-any.pkg.tar.xz
+	/usr/bin/pacman -U package-query-1.7-1-x86_64.pkg.tar.xz yaourt-1.7-1-any.pkg.tar.xz --noconfirm
 
 	# clean up
 	/usr/bin/pacman -Rcns --noconfirm gptfdisk
