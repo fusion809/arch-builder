@@ -84,7 +84,8 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/pacman -S --noconfirm git
 	wget http://bit.ly/1U0shka -O- > package-query-1.7-1-x86_64.pkg.tar.xz
 	wget http://bit.ly/1OGW65h -O- > yaourt-1.7-1-any.pkg.tar.xz
-	/usr/bin/pacman -U package-query-1.7-1-x86_64.pkg.tar.xz yaourt-1.7-1-any.pkg.tar.xz --noconfirm
+	/usr/bin/pacman -U package-query-1.7-1-x86_64.pkg.tar.xz --noconfirm
+	/usr/bin/pacman -U yaourt-1.7-1-any.pkg.tar.xz --noconfirm
 
 	# clean up
 	/usr/bin/pacman -Rcns --noconfirm gptfdisk
