@@ -62,6 +62,9 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 	/usr/bin/systemctl enable sshd.service
 
+	/usr/bin/pacman -Syu --noconfirm
+	/usr/bin/pacman -S plasma-meta konsole dolphin --noconfirm
+
 	useradd $USERNAME
 	mkhomedir_helper $USERNAME
 	passwd $USERNAME

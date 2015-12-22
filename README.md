@@ -11,6 +11,12 @@ You can also use the `install-virtualbox.sh` script to install Arch Linux on a p
     chmod +x install.sh
     ./install.sh
 
+alternatively you can use `install-rmdrive.sh` to install Arch Linux on a removable drive. To do this run:
+
+    wget http://bit.ly/1OJ48KU -O- > install.sh
+    chmod +x install.sh
+    ./install.sh
+
 ## Untested scripts
 These scripts I have not actually run, because running these packer commands takes at least an hour to run. Whereas to get an otherwise minimalist AL-VBM with [`ps_mem`](https://github.com/pixelb/ps_mem/) ready to perform RAM testing run:
 
