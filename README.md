@@ -17,6 +17,12 @@ alternatively you can use `install-rmdrive.sh` to install Arch Linux on a remova
     chmod +x install.sh
     ./install.sh
 
+alternatively to use `install.sh` run:
+
+    wget http://bit.ly/1QJ7yDr -O- > install.sh
+    chmod +x install.sh
+    ./install.sh
+
 ## Untested scripts
 These scripts I have not actually run, because running these packer commands takes at least an hour to run. Whereas to get an otherwise minimalist AL-VBM with [`ps_mem`](https://github.com/pixelb/ps_mem/) ready to perform RAM testing run:
 
