@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
 DISK='/dev/sda'
-echo "Type in the hostname, followed by [ENTER]:"
-read FQDN
-echo "Type in the username, followed by [ENTER]:"
-read USERNAME
+FDQN='brenton-vbox'
+USERNAME='fusion809'
 KEYMAP='us'
 LANGUAGE='en_AU.UTF-8'
-echo "Type in the password, followed by [ENTER]:"
-read PASS
+PASS=root
 PASSWORD=$(/usr/bin/openssl passwd -crypt "$PASS")
 TIMEZONE='Australia/Brisbane'
 
@@ -71,13 +68,10 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/systemctl enable dkms.service
 	/usr/bin/systemctl enable vboxservice.service
 	/usr/bin/systemctl enable rpcbind.service
+	/usr/bin/systemctl enable vboxnetftl.service
 
 	useradd $USERNAME
 	mkhomedir_helper $USERNAME
-	passwd $USERNAME
-	echo "$PASSWORD"
-
-	echo "$PASSWORD"
 
 
 	# Yaourt
