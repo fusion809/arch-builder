@@ -1,0 +1,6 @@
+Log created: 2016-01-14T07:04:51.626829000Z
+Executable: /usr/lib/virtualbox/VBoxSVC
+Arg[0]: /usr/lib/virtualbox/VBoxSVC
+Arg[1]: --auto-shutdown
+VERR_TRY_AGAIN (-52) - Retry the operation.
+VERR_TRY_AGAIN (-52) - Retry the operation.
