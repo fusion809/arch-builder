@@ -74,8 +74,9 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 
 	# Yaourt
 	/usr/bin/pacman -S --noconfirm git
-	wget http://bit.ly/1U0shka -O- > package-query-1.7-1-x86_64.pkg.tar.xz
-	wget http://bit.ly/1OGW65h -O- > yaourt-1.7-1-any.pkg.tar.xz
+	GHUB=https://raw.githubusercontent.com/fusion809/arch-builder/master/packages/
+	wget $GHUB/package-query-1.7-1-x86_64.pkg.tar.xz -O- > package-query-1.7-1-x86_64.pkg.tar.xz
+	wget $GHUB/yaourt-1.7-1-any.pkg.tar.xz -O- > yaourt-1.7-1-any.pkg.tar.xz
 	/usr/bin/pacman -U package-query-1.7-1-x86_64.pkg.tar.xz --noconfirm
 	/usr/bin/pacman -U yaourt-1.7-1-any.pkg.tar.xz --noconfirm
 
