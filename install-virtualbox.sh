@@ -70,9 +70,7 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/systemctl enable rpcbind.service
 	/usr/bin/systemctl enable vboxnetftl.service
 
-	useradd $USERNAME
-	mkhomedir_helper $USERNAME
-
+	useradd -m -g wheel $USERNAME
 
 	# Yaourt
 	/usr/bin/pacman -S --noconfirm git
